@@ -13,4 +13,34 @@
 
 Route::get('/', function () {
     return view('welcome');
+    //  return "Hello world";
 });
+
+Route::get('/about', function () {
+    //return view('welcome');
+      return "Hi About";
+});
+
+Route::get('/contact', function () {
+    //return view('welcome');
+      return "Hi Contact";
+});
+
+Route::get('/post/{id}/{name}',function($id, $name){
+    return 'this is post number'. $id .'and the name is'. $name;
+});
+
+//nick name URL
+Route::get('admin/posts/example', array('as'=>'admin.home' ,function(){
+    $url = route('admin.home');
+    return 'this url is:' . $url;
+
+}));
+
+
+// Route::group(['middleware' => ['web']], function () {
+//     //return view('welcome');
+//     //echo "sdfdsdfdsfd";
+//     //return "test";
+// });
+
