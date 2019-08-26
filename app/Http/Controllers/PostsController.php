@@ -14,6 +14,8 @@ class PostsController extends Controller
     public function index()
     {
         //
+
+       
     }
 
     /**
@@ -23,7 +25,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+    return 'create stuff';
     }
 
     /**
@@ -46,6 +48,8 @@ class PostsController extends Controller
     public function show($id)
     {
         //
+
+        return 'this is the show method  ' . $id;
     }
 
     /**

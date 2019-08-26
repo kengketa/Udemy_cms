@@ -16,26 +16,26 @@ Route::get('/', function () {
     //  return "Hello world";
 });
 
-Route::get('/about', function () {
-    //return view('welcome');
-      return "Hi About";
-});
+// Route::get('/about', function () {
+//     //return view('welcome');
+//       return "Hi About";
+// });
 
-Route::get('/contact', function () {
-    //return view('welcome');
-      return "Hi Contact";
-});
+// Route::get('/contact', function () {
+//     //return view('welcome');
+//       return "Hi Contact";
+// });
 
-Route::get('/post/{id}/{name}',function($id, $name){
-    return 'this is post number'. $id .'and the name is'. $name;
-});
+// Route::get('/post/{id}/{name}',function($id, $name){
+//     return 'this is post number'. $id .'and the name is'. $name;
+// });
 
-//nick name URL
-Route::get('admin/posts/example', array('as'=>'admin.home' ,function(){
-    $url = route('admin.home');
-    return 'this url is:' . $url;
+// //nick name URL
+// Route::get('admin/posts/example', array('as'=>'admin.home' ,function(){
+//     $url = route('admin.home');
+//     return 'this url is:' . $url;
 
-}));
+// }));
 
 
 // Route::group(['middleware' => ['web']], function () {
@@ -44,3 +44,10 @@ Route::get('admin/posts/example', array('as'=>'admin.home' ,function(){
 //     //return "test";
 // });
 
+
+
+
+
+//Route::get('post/{id}','PostsController@index');
+
+Route::resource('posts','PostsController');
