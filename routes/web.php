@@ -55,3 +55,4 @@ Route::get('/', function () {
 Route::get('/contact','PostsController@contact');
 
 Route::get('post/{id}/{name}/{password}','PostsController@show_post');
+//Route::get('post','PostsController@show_post');
