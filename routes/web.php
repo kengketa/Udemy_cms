@@ -59,7 +59,7 @@ Application Database Raw SQL quries
 */
 
 // Route::get('/insert', function () {
-//     DB::insert('insert into posts (title,content) values (?, ?)', ['PHP with Laravel','Laravel is great']);
+//     DB::insert('insert into posts (title,content) values (?, ?)', ['laravel','Laravel is great']);
     
 // });
 
@@ -80,9 +80,165 @@ Application Database Raw SQL quries
 //     return $updated;
 // });
 
-Route::get('/delete', function () {
+// Route::get('/delete', function () {
 
-   $deleted = DB::delete('delete from posts where id = ?', [2]);
-    return $deleted;
+//    $deleted = DB::delete('delete from posts where id = ?', [2]);
+//     return $deleted;
+    
+// });
+
+/* 
+|------------------------------------------------
+Application Database Eloquent (ORM)
+|------------------------------------------------
+*/
+use App\Post;
+
+// Route::get('/read', function () {
+
+//     $posts = Post::all();
+//     //return $posts;
+//     foreach ($posts as $key) {
+
+//         return $key->title;
+//     }
+// });
+
+// Route::get('/find', function () {
+
+//     $post = Post::find(1);
+//     return $post->title;
+    
+// });
+
+// Route::get('/find.2', function () {
+//     $posts = Post::where('title','PHP')->orderBy('id','asc')->take(99)->get();
+//     return $posts;
+//     // foreach ($posts as $key) {
+//     //     return $key->title;
+//     //     # code...
+//     // }
+// });
+
+
+// Route::get('/find.3', function () {
+    
+//     // $posts=Post::findOrFail(1);
+//     // return $posts;
+//     $posts = Post::where('id','>',3)->orderBy('id','asc')->take(99)->get();
+//     return $posts;
+
+// });
+
+
+// Route::get('/insertorm', function () {
+
+//     $post = new Post;
+//     $post->title = 'New ORM title';
+//     $post->content = 'hfdjaskfhjkdshfkldhflhdj';
+//     $post->save();
+    
+// });
+
+// Route::get('/updateorm', function () {
+
+//     $posts = Post::where('title','laravel')->orderBy('id','asc')->take(100)->get();
+//     //return $posts;
+//     foreach ($posts as $post) {
+//         $post->title= 'Updated with ORM';
+//         $post->content= 'Updated with ORM jsdfhsdkfhdskhfudfkfghf';
+//         $post->save();
+
+//     }
+     
+// });
+//test bulkdel
+// Route::get('/bulkdel', function () {
+
+//     $posts = Post::where('id','>',3)->take(100)->get();
+//     return $posts;
+//     // foreach ($posts as $post) {
+       
+        
+//     // }
+// });
+
+// Route::get('/create', function () {
+
+//     Post::create([
+//         'title'     => 'the create method',
+//         'content'   => 'wow dsjfkdjsflkdjkdfjd'
+//     ]);
+    
+// });
+
+// Route::get('/update', function () {
+    
+//     $updated = Post::where('id',10)->where('is_admin',0)->update(['title'=>'New PHP Title','content'=>'New content']);
+//     return $updated;
+
+// });
+
+// Route::get('delete', function () {
+
+//     $post=Post::find(14);
+//     $post->delete();
+//     return $post;
+  
+
+    
+// });
+
+// Route::get('/delete.2', function () {
+
+//     Post::destroy(13);
+    
+// });
+
+// Route::get('/delete.3', function () {
+
+//     Post::destroy(11,12);
+    
+// });
+
+// Route::get('/delete.4', function () {
+
+//     //return Post::where('id','>=',7)->take(100)->get();
+//     return Post::where('id','>=',7)->delete();
+    
+// });
+
+// Route::get('/softdelete/{id}', function ($id) {
+
+//     Post::destroy($id);
+    
+// });
+// Route::get('/readsoftdel', function () {
+
+//     // $posts=Post::all();
+//     // return $posts;
+
+//     // $posts = Post::withTrashed()->get();
+//     // return $posts;
+
+//     $posts = Post::onlyTrashed()->where('id',6)->get();
+//     return $posts;
+    
+// });
+
+// Route::get('/restore_softdel', function () {
+
+//     $post=Post::withTrashed()->where('id',6)->restore();
+//     return $post;
+    
+// });
+
+/////////////force delete/////////////////////
+
+Route::get('/forcedelete', function () {
+
+        $post=Post::onlyTrashed()->where('is_admin',0)->forcedelete();
+        return $post; 
+
     
 });
