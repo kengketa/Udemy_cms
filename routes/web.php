@@ -1,6 +1,8 @@
 <?php
 use App\Post;
 use App\Flight;
+use App\User;
+use App\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -305,3 +307,143 @@ Application Database Eloquent (ORM)
 // I have done a great job///
 
 
+/* 
+|------------------------------------------------
+Section 11 Eloquent relationship
+|------------------------------------------------
+*/
+
+// create dummy data
+// Route::get('/bulkposts', function () {
+
+//         $i = 0;
+//         while ($i<100) {
+//                 $post = new Post;
+//                 $post->user_id = 1;
+//                 $post->title = 'Title'.$i;
+//                 $post->content = 'Test content'.$i;
+//                 $post->save();
+//                 $i++;
+//         }
+//         return $i;
+    
+// });
+
+
+// One to one relation /////
+// Route::get('/user/{id}/post', function ($id) {
+    
+//         return  User::find($id)->post->title;
+
+// });
+// // Inverse one to one
+// Route::get('/post/{id}/user', function ($id) {
+    
+//         return  Post::find($id)->user;
+
+// });
+
+/// one to many relation
+
+// Route::get('/posts', function () {
+
+//         $user = User::find(1);
+//         //return $post;
+//         foreach ($user->posts as $post) {
+//                echo $post->title ."<br>";
+//         }
+    
+// });
+
+/// test my own One to Many relationship
+
+// Route::get('user/{id}/posts', function ($id) {
+
+//         $user = User::find($id);
+//         foreach ($user->posts as $post) 
+//         {
+//                echo $post."<br>";
+//         }
+    
+// });
+
+//  Many to many relation
+
+
+// Route::get('/user/{id}/roles', function ($id) {
+
+//         $user = User::find($id);
+//         foreach ($user->roles as $role) {
+               
+//                 echo $role->name;
+//         }
+
+// });
+// Route::get('/user/{id}/roles', function ($id) {
+
+//         $user = User::find($id)->roles()->get();
+//         return $user;
+//         // foreach ($user->roles as $role) {
+               
+//         //         echo $role->name;
+//         // }
+
+// });
+
+/// Revers Many to Many relation
+
+// Route::get('/role/{id}/users', function ($id) {
+
+//         // $role = Role::find($id);
+//         // foreach ($role->users as $user) {
+//         //         echo $user."<br>";
+//         // }
+
+//         $role = Role::find($id)->users()->orderBy('id','asc')->get();
+//         return $role;
+    
+// });
+
+//create dummy data
+// Route::get('/bulkuser', function () {
+
+//         $i = 0;
+//         while ($i<10) {
+//                 $user = new User;
+//                 $user->name = "user".$i;
+//                 $user->email = "email".$i;
+//                 $user->password = "1234";
+//                 //$user->role = 1;
+//                 $user->save();
+//                 $i++;
+//         }
+//         return $i;
+    
+// });
+
+
+////// try to add data to Pivot
+
+// Route::get('/newuser/{name}/{role}', function ($name,$role) {
+
+//         $user = new User;
+//         $user->name = $name;
+//         $user->email = $name."@gg.com";
+//         $user->password = Hash::make('1234');
+//         $user->save();
+//         $user->roles()->attach($role);
+//         return $user;
+// });
+
+// Accessing Pivot table
+
+
+Route::get('/user/pivot', function () {
+
+        $user = User::find(1);
+        foreach ($user->roles as $role) {
+                return $role->pivot->created_at;
+        }
+
+    
+});
