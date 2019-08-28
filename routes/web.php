@@ -1,4 +1,6 @@
 <?php
+use App\Post;
+use App\Flight;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +94,7 @@ Application Database Raw SQL quries
 Application Database Eloquent (ORM)
 |------------------------------------------------
 */
-use App\Post;
+
 
 // Route::get('/read', function () {
 
@@ -235,10 +237,71 @@ use App\Post;
 
 /////////////force delete/////////////////////
 
-Route::get('/forcedelete', function () {
+// Route::get('/forcedelete', function () {
 
-        $post=Post::onlyTrashed()->where('is_admin',0)->forcedelete();
-        return $post; 
+//         $post=Post::onlyTrashed()->where('is_admin',0)->forcedelete();
+//         return $post; 
 
     
-});
+// });
+
+
+////////Test by my own //////////////
+
+// Route::get('/insflight', function () {
+
+       
+//         $i=0;
+//         while ($i <= 100) {
+//                 $flight = new Flight;
+//                 $flight->name = "Test Flight".$i;
+//                 $flight->from = "BKK";
+//                 $flight->destination = "MLB";
+//                 $flight->save();
+//                 $i++;
+//                 //return $flight;
+//         }
+
+// });
+
+
+// Route::get('/flight', function () {
+
+//         $flights = Flight::all();
+//         return $flights;
+    
+// });
+
+// Route::get('/flight_get/{id}', function ($id) {
+
+//         $flight = Flight::find($id);
+//         return $flight;
+    
+// });
+// Route::get('/flight_where/{from}', function ($from) {
+
+//         $flight = Flight::where('from',$from)->orderBy('id','desc')->take(100)->get();
+//         return $flight . '<br>';
+    
+// });
+// Route::get('/update_where/{from}/{newform}', function ($from,$newform) {
+
+//        $flights = Flight::where('from',$from)->orderBy('id','asc')->take(100)->get();
+//       foreach ($flights as $flight) {
+//              $flight->from = $newform;
+//              $flight->save();
+//              //return $flight;
+//       }
+    
+// });
+
+// Route::get('flight_del/{id}', function ($id) {
+
+//         $flight = Flight::destroy($id);
+//         return $flight;
+    
+// });
+
+// I have done a great job///
+
+
