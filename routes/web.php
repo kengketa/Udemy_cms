@@ -3,6 +3,8 @@ use App\Post;
 use App\Flight;
 use App\User;
 use App\Role;
+use App\Country;
+use App\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -438,12 +440,72 @@ Section 11 Eloquent relationship
 // Accessing Pivot table
 
 
-Route::get('/user/pivot', function () {
+// Route::get('/user/pivot', function () {
 
-        $user = User::find(1);
-        foreach ($user->roles as $role) {
-                return $role->pivot->created_at;
-        }
+//         $user = User::find(1);
+//         foreach ($user->roles as $role) {
+//                 return $role->pivot->updated_at;
+//         }
 
     
+// });
+
+// Route::get('/country/{id}/posts', function ($id) {
+
+//        $posts =  Country::find($id)->posts()->get();
+//        //return $country;
+//        foreach ($posts as $post) {
+//              echo $post->title." ". $post->content."<br>";
+//        }
+
+//         $country =  Country::find($id);
+//        foreach ($country->posts as $post) {
+//                return $post->title;
+//        }
+    
+//});
+
+// Route::get('/newcountry', function () {
+
+//         $i = 1;
+//         while ($i<50) {
+//                 $country = new Country;
+//                 $country->name = 'CNT'.$i;
+//                 $country->save();
+//                 $i++;
+//         }
+//         return $i;
+    
+// });
+
+
+/// Polymorphic relation
+
+// Route::get('/user/{id}/photos', function ($id) {
+
+//         $user = User::find($id);
+//         foreach ($user->photos as $photo) {
+//                 return $photo;
+//         }
+    
+// });
+// Route::get('/post/{id}/photos', function ($id) {
+
+//         // $posts = Post::find($id);
+//         // foreach ($posts->photos as $photo) {
+//         //         echo $photo;
+//         // }
+
+//         $posts = Post::find($id)->photos()->get();
+//         return $posts;
+    
+// });
+
+Route::get('/photo/{id}', function ($id) {
+
+        $photo = Photo::findOrFail($id);
+       return $photo->imageable_type;
+    
 });
+
+

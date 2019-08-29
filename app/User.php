@@ -42,7 +42,12 @@ class User extends Authenticatable
     /// Many to Many relation
     public function roles()
     {
-        return $this->belongsToMany('App\Role')->withPivot('created_at');
+        return $this->belongsToMany('App\Role')->withPivot('created_at','updated_at');
+    }
+
+    public function photos(){
+
+        return $this->morphMany('App\Photo','imageable');
     }
 
 }
