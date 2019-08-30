@@ -5,6 +5,7 @@ use App\User;
 use App\Role;
 use App\Country;
 use App\Photo;
+use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -501,11 +502,34 @@ Section 11 Eloquent relationship
     
 // });
 
-Route::get('/photo/{id}', function ($id) {
+// Route::get('/photo/{id}', function ($id) {
 
-        $photo = Photo::findOrFail($id);
-       return $photo->imageable_type;
+//         $photo = Photo::findOrFail($id);
+//        return $photo->imageable_type;
     
-});
+// });
 
 
+//////// POLYMorphic Many to many /////////////
+
+// Route::get('/post/tags', function () {
+
+//         $post = Post::find(1);
+//         foreach ($post->tags as $tag) 
+        
+//         echo $tag;
+    
+// });
+
+
+//// owner of polymorphic ///// NOT WORKING
+
+// Route::get('/tag/post', function () {
+    
+//         $tag = Tag::find(1);
+//         // foreach ($tag->posts as $post) {
+//         //         echo $post->title;
+//         // }
+
+//         return $tag;
+// });
