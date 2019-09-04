@@ -533,3 +533,9 @@ Section 11 Eloquent relationship
 
 //         return $tag;
 // });
+
+
+////// SECTION 18 SMALLL APPLICATION////////
+
+
+Route::resource('/posts', 'PostsController');

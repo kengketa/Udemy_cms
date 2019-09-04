@@ -40,14 +40,20 @@ class User extends Authenticatable
     // }
 
     /// Many to Many relation
-    public function roles()
+    // public function roles()
+    // {
+    //     return $this->belongsToMany('App\Role')->withPivot('created_at','updated_at');
+    // }
+
+    // public function photos(){
+
+    //     return $this->morphMany('App\Photo','imageable');
+    // }
+
+    ////// Small application SECTION 18
+    public function posts()
     {
-        return $this->belongsToMany('App\Role')->withPivot('created_at','updated_at');
-    }
-
-    public function photos(){
-
-        return $this->morphMany('App\Photo','imageable');
+        return $this->hasMany('App\Post');
     }
 
 }
