@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\CreatePostRequest;
 
 class PostsController extends Controller
 {
@@ -38,20 +39,22 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //return $request->all();
         // return $request->get('title');
          //return $request->title;
 
-        Post::create($request->all());
+        //Post::create($request->all());
         //  $input = $request->all();
         //  $input['title'] = $request->title;
         //  Post::create($request->all());
         // $post = new Post;
         // $post->title = $request->title;
         // $post->save();
+        // $this->validate($request,['title' =>  'required|max:5']);
 
+        Post::create($request->all());
         return redirect('/posts');
 
     }
@@ -89,8 +92,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePostRequest $request, $id)
     {
+        
         $post = Post::findOrFail($id);
         $post->update($request->all());
 

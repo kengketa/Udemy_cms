@@ -538,4 +538,10 @@ Section 11 Eloquent relationship
 ////// SECTION 18 SMALLL APPLICATION////////
 
 
-Route::resource('/posts', 'PostsController');
+
+
+Route::group(['middleware'=>'web'], function(){
+
+    Route::resource('/posts', 'PostsController');
+
+});
